@@ -8,12 +8,15 @@ services:
       - SA_PASSWORD=YourStrong!Passw0rd
     ports:
       - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
   
   web:
     build: .
-    volumes:
-      - .:/app
     ports:
       - "80:80"
     depends_on:
       - sqlserver
+
+volumes:
+  sqliweb-main_sqlserver_data:
